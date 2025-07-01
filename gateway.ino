@@ -9,7 +9,7 @@
 RH_RF95 rf95(10, 2);
 String myID = "3";
 
-String thingSpeakKey = "XQQTPOJVZLJDGU39";
+String thingSpeakKey = "YOUR_API_KEY";
 
 // Track last received sequence per node
 String lastSourceID = "";
@@ -18,7 +18,7 @@ int lastSeqNum = -1;
 void setup() {
   Bridge.begin(BAUDRATE);
   Console.begin();
-  while (!Console);  // Wait for Console to be ready
+  while (!Console);
 
   if (!rf95.init()) {
     Console.println("LoRa init failed");
@@ -45,7 +45,7 @@ void loop() {
       Console.print("Received: ");
       Console.println(raw);
 
-      // Expected format: srcID|destID|seq|temp|hum|path
+      //Format: srcID|destID|seq|temp|hum|path
       int i1 = raw.indexOf('|');
       int i2 = raw.indexOf('|', i1 + 1);
       int i3 = raw.indexOf('|', i2 + 1);
